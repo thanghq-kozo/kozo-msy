@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,4 +17,6 @@ Route::group(['prefix' => 'order', 'as' => 'order.'], function () {
     Route::get('/', 'OrderController@index')->name('index');
     Route::get('/remind', 'OrderController@getOrdersRemind')->name('getOrdersRemind');
     Route::get('/update_count', 'OrderController@updateCount')->name('updateCount');
+    Route::post('/', 'OrderController@create')->name('create');
+    Route::put('/', 'OrderController@create')->name('create');
 });

@@ -27,4 +27,9 @@ class OrderService
     {
         return $this->orderRepository->updateCount();
     }
+
+    public function insert(array $attributes)
+    {
+        return $this->orderRepository->insert($attributes);
+    }
 }

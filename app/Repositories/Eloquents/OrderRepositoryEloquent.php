@@ -55,4 +55,9 @@ class OrderRepositoryEloquent extends BaseRepository implements OrderRepository
         $rentDay = date('Y-m-d' , strtotime('-31 day', strtotime(Carbon::now()->format('Y-m-d'))));
         return DB::statement("UPDATE `orders` SET `count` = `count` + 1 WHERE DATE(`fulfillments_update_at`) = '$rentDay' AND `count` < 10 AND `status` = 'success'");
     }
+
+    public function insert(array $data)
+    {
+        return $this->model->insert($data);
+    }
 }
