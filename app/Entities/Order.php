@@ -20,5 +20,5 @@ class Order extends Model implements Transformable
      *
      * @var array
      */
-    protected $fillable = ['id_order', 'email', 'contact_email', 'order_status_url', 'referring_site', 'customer_id', 'count', 'status', 'fulfillments_update_at'];
+    protected $fillable = ['id_order', 'line_item_id', 'product_id', 'variant_id', 'email', 'contact_email', 'order_status_url', 'referring_site', 'customer_id', 'quantity', 'count', 'status', 'fulfillments_update_at'];
 }

@@ -18,12 +18,16 @@ class CreateOrdersTable extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->Increments('id');
-            $table->bigInteger('id_order')->unique();
+            $table->bigInteger('id_order');
+            $table->bigInteger('line_item_id');
+            $table->bigInteger('product_id');
+            $table->bigInteger('variant_id');
             $table->string('email')->nullable();
             $table->string('contact_email')->nullable();
             $table->text('order_status_url')->nullable();
             $table->text('referring_site')->nullable();
             $table->bigInteger('customer_id')->nullable();
+            $table->integer('quantity')->nullable();
             $table->string('status')->nullable();
             $table->integer('count')->default(0);
             $table->timestamp('fulfillments_update_at')->nullable();
