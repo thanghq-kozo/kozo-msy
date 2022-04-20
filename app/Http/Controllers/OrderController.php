@@ -92,4 +92,9 @@ class OrderController extends Controller
             return CommonResponse::unknownResponse($e);
         }
     }
+
+    public function updateStatus(Request $request): JsonResponse
+    {
+        return ResponseHelper::send($this->orderService->updateStatus($request['ids']));
+    }
 }

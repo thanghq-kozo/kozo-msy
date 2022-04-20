@@ -60,4 +60,9 @@ class OrderRepositoryEloquent extends BaseRepository implements OrderRepository
     {
         return $this->model->insert($data);
     }
+
+    public function updateStatus(array $ids)
+    {
+        return $this->model->whereIn('id', $ids)->update(['status' => 'canceled']);
+    }
 }

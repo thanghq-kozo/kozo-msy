@@ -14,4 +14,5 @@ interface OrderRepository extends RepositoryInterface
     public function ordersRemind();
     public function updateCount();
     public function insert(array $data);
+    public function updateStatus(array $ids);
 }
