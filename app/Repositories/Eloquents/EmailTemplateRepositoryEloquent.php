@@ -6,6 +6,7 @@ use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
 use App\Repositories\EmailTemplateRepository;
 use App\Entities\EmailTemplate;
+use Prettus\Repository\Exceptions\RepositoryException;
 
 /**
  * Class EmailTemplateRepositoryEloquent.
@@ -31,7 +32,10 @@ class EmailTemplateRepositoryEloquent extends BaseRepository implements EmailTem
      */
     public function boot()
     {
-        $this->pushCriteria(app(RequestCriteria::class));
+        try {
+            $this->pushCriteria(app(RequestCriteria::class));
+        } catch (RepositoryException $e) {
+        }
     }
 
 }

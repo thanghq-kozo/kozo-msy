@@ -20,5 +20,14 @@ class Shop extends Model implements Transformable
      *
      * @var array
      */
-    protected $fillable = ['shop_url', 'session_id', 'domain_id', 'access_token', 'state', 'isOnline', 'onlineAccessInfo', 'scope'];
+    protected $fillable = [
+        'shop_url',
+        'session_id',
+        'domain_id',
+        'access_token',
+        'state',
+        'isOnline',
+        'onlineAccessInfo',
+        'scope'
+    ];
 }

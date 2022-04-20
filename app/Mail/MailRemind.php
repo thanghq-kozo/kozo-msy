@@ -29,6 +29,9 @@ class MailRemind extends Mailable
      */
     public function build(): MailRemind
     {
-        return $this->from('adidasshoeshoppbl6@gmail.com', 'Adidas Shoe Shop')->subject('Welcome!')->view('mail.email', ['data' => $this->mailData]);
+        return $this
+            ->from('adidasshoeshoppbl6@gmail.com', 'Adidas Shoe Shop')
+            ->subject('Welcome!')
+            ->view('mail.email', ['data' => $this->mailData]);
     }
 }

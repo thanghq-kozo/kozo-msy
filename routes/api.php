@@ -18,5 +18,5 @@ Route::group(['prefix' => 'order', 'as' => 'order.'], function () {
     Route::get('/remind', 'OrderController@getOrdersRemind')->name('getOrdersRemind');
     Route::get('/update_count', 'OrderController@updateCount')->name('updateCount');
     Route::post('/', 'OrderController@create')->name('create');
-    Route::put('/', 'OrderController@create')->name('create');
+    Route::put('/', 'OrderController@updateStatus')->name('updateStatus');
 });

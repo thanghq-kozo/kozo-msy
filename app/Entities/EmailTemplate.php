@@ -20,5 +20,9 @@ class EmailTemplate extends Model implements Transformable
      *
      * @var array
      */
-    protected $fillable = ['email_type', 'email_subject', 'email_body'];
+    protected $fillable = [
+        'email_type',
+        'email_subject',
+        'email_body'
+    ];
 }

@@ -77,7 +77,7 @@ class OrderController extends Controller
                     'fulfillments_update_at' => $data['fulfillments_update_at'],
                     'created_at' => Carbon::now()
                 ];
-                array_push($orders, $order);
+                $orders = $orders->push($order);
             }
             $dataInsert = $this->orderService->insert($orders);
             DB::commit();
@@ -91,5 +91,10 @@ class OrderController extends Controller
             Log::error($e);
             return CommonResponse::unknownResponse($e);
         }
+    }
+
+    public function updateStatus(Request $request): JsonResponse
+    {
+        return ResponseHelper::send($this->orderService->updateStatus($request['ids']));
     }
 }
