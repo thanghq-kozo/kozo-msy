@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Repositories\ContractRepository;
+use App\Repositories\Eloquents\ContractRepositoryEloquent;
 use App\Repositories\UserRepository;
 use App\Repositories\Eloquents\UserRepositoryEloquent;
 use App\Repositories\EmailTemplateRepository;
@@ -25,6 +27,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(OrderRepository::class, OrderRepositoryEloquent::class);
         $this->app->bind(ShopRepository::class, ShopRepositoryEloquent::class);
         $this->app->bind(EmailTemplateRepository::class, EmailTemplateRepositoryEloquent::class);
+        $this->app->bind(ContractRepository::class, ContractRepositoryEloquent::class);
     }
 
     /**

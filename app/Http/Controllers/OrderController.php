@@ -77,7 +77,7 @@ class OrderController extends Controller
                     'fulfillments_update_at' => $data['fulfillments_update_at'],
                     'created_at' => Carbon::now()
                 ];
-                $orders = $orders->push($order);
+                array_push($orders, $order);
             }
             $dataInsert = $this->orderService->insert($orders);
             DB::commit();
