@@ -13,6 +13,10 @@ class ContractService
         $this->contractRepository = $contractRepository;
     }
 
+    public function all() {
+        return $this->contractRepository->all();
+    }
+
     public function insert(array $attributes)
     {
         return $this->contractRepository->insert($attributes);

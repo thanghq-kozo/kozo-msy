@@ -20,7 +20,8 @@ Route::group(['prefix' => 'order', 'as' => 'order.'], function () {
     Route::post('/', 'OrderController@create')->name('create');
     Route::put('/', 'OrderController@updateStatus')->name('updateStatus');
 });
-Route::group(['prefix' => 'contract', 'as' => 'order.'], function () {
+Route::group(['prefix' => 'contract', 'as' => 'contract.'], function () {
+    Route::get('/', 'ContractController@index')->name('index');
     Route::post('/', 'ContractController@create')->name('create');
     Route::put('/', 'ContractController@updateStatus')->name('updateStatus');
 });

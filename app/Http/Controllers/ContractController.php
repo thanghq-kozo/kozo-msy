@@ -22,6 +22,10 @@ class ContractController extends Controller
     {
         $this->contractService = $contractService;
     }
+    public function index(): JsonResponse
+    {
+        return ResponseHelper::send($this->contractService->all());
+    }
 
     public function create(Request $request): JsonResponse
     {
