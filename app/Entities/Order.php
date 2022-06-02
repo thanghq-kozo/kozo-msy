@@ -22,6 +22,8 @@ class Order extends Model implements Transformable
      */
     protected $fillable = [
         'id_order',
+        'order_name',
+        'order_token',
         'line_item_id',
         'product_id',
         'variant_id',

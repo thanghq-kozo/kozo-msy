@@ -64,17 +64,19 @@ class OrderController extends Controller
             foreach ($listData as $data) {
                 $order = [
                     'id_order' => $data['id_order'],
+                    'order_name' => $data['order_name'],
+                    'order_token' => $data['order_token'] ?? null,
                     'line_item_id' => $data['line_item_id'],
                     'product_id' => $data['product_id'],
                     'variant_id' => $data['variant_id'],
-                    'email' => $data['email'],
-                    'contact_email' => $data['contact_email'],
-                    'order_status_url' => $data['order_status_url'],
-                    'referring_site' => $data['referring_site'],
-                    'customer_id' => $data['customer_id'],
-                    'status' => $data['status'],
-                    'quantity' => $data['quantity'],
-                    'fulfillments_update_at' => $data['fulfillments_update_at'],
+                    'email' => $data['email'] ?? null,
+                    'contact_email' => $data['contact_email'] ?? null,
+                    'order_status_url' => $data['order_status_url'] ?? null,
+                    'referring_site' => $data['referring_site'] ?? null,
+                    'customer_id' => $data['customer_id'] ?? null,
+                    'status' => $data['status'] ?? null,
+                    'quantity' => $data['quantity'] ?? null,
+                    'fulfillments_update_at' => $data['fulfillments_update_at'] ?? null,
                     'created_at' => Carbon::now()
                 ];
                 array_push($orders, $order);
