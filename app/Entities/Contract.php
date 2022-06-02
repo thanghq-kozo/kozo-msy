@@ -3,6 +3,7 @@
 namespace App\Entities;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Prettus\Repository\Contracts\Transformable;
 use Prettus\Repository\Traits\TransformableTrait;
 
@@ -34,4 +35,9 @@ class Contract extends Model implements Transformable
         'status',
         'origin_order_id',
     ];
+
+    public function order(): HasOne
+    {
+        return $this->hasOne(Order::class, 'id_order', 'origin_order_id');
+    }
 }

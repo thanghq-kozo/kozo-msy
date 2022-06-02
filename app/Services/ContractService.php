@@ -14,7 +14,7 @@ class ContractService
     }
 
     public function all() {
-        return $this->contractRepository->all();
+        return $this->contractRepository->with(['order'])->all();
     }
 
     public function insert(array $attributes)
