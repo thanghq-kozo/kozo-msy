@@ -34,6 +34,11 @@ class ContractRepositoryEloquent extends BaseRepository implements ContractRepos
         $this->pushCriteria(app(RequestCriteria::class));
     }
 
+    public function allDesc()
+    {
+        return $this->model->select('*')->orderBy('id','DESC')->get();
+    }
+
     public function insert(array $data)
     {
         return $this->model->insert($data);
@@ -43,6 +48,6 @@ class ContractRepositoryEloquent extends BaseRepository implements ContractRepos
     {
         return $this->model
             ->whereIn('id', $ids)
-            ->update(['status' => 'canceled']);
+            ->update(['status' => 'CANCELLED']);
     }
 }

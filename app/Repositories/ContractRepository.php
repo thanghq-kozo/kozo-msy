@@ -11,6 +11,7 @@ use Prettus\Repository\Contracts\RepositoryInterface;
  */
 interface ContractRepository extends RepositoryInterface
 {
+    public function allDesc();
     public function insert(array $data);
     public function updateStatus(array $ids);
 }

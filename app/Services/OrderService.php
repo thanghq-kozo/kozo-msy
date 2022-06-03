@@ -15,7 +15,7 @@ class OrderService
 
     public function all()
     {
-        return $this->orderRepository->all();
+        return $this->orderRepository->all()->sortByDesc('id');
     }
 
     public function getOrdersRemind()
