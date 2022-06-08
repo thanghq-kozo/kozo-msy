@@ -70,4 +70,9 @@ class ContractController extends Controller
     {
         return ResponseHelper::send($this->contractService->updateStatus($request['ids']));
     }
+
+    public function getContractByIdOrder($id): JsonResponse
+    {
+        return ResponseHelper::send($this->contractService->findByField('origin_order_id', $id));
+    }
 }

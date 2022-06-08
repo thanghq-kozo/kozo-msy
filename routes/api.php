@@ -24,4 +24,5 @@ Route::group(['prefix' => 'contract', 'as' => 'contract.'], function () {
     Route::get('/', 'ContractController@index')->name('index');
     Route::post('/', 'ContractController@create')->name('create');
     Route::put('/', 'ContractController@updateStatus')->name('updateStatus');
+    Route::get('/{id}', 'ContractController@getContractByIdOrder')->name('getContractByIdOrder');
 });

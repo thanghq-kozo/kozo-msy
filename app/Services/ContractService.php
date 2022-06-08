@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Repositories\ContractRepository;
+use Brick\Math\BigInteger;
 
 class ContractService
 {
@@ -25,5 +26,10 @@ class ContractService
     public function updateStatus(array $ids)
     {
         return $this->contractRepository->updateStatus($ids);
+    }
+
+    public function findByField($field, $value, $columns = ['*'])
+    {
+        return $this->contractRepository->findByField($field, $value, $columns);
     }
 }
