@@ -27,6 +27,10 @@ class CreateContractsTable extends Migration
             $table->decimal('delivery_price', $precision = 18, $scale = 2)->nullable();
             $table->string('status')->nullable();
             $table->bigInteger('origin_order_id')->nullable();
+            $table->integer('quantity')->nullable();
+            $table->bigInteger('product_id')->nullable();
+            $table->bigInteger('variant_id')->nullable();
+            $table->decimal('current_price', $precision = 18, $scale = 2)->nullable();
             $table->timestamps();
         });
     }

@@ -34,10 +34,14 @@ class Contract extends Model implements Transformable
         'delivery_price',
         'status',
         'origin_order_id',
+        'quantity',
+        'product_id',
+        'variant_id',
+        'current_price'
     ];
 
     public function order(): HasOne
     {
-        return $this->hasOne(Order::class, 'id_order', 'origin_order_id');
+        return $this->hasOne(Order::class, 'variant_id', 'variant_id');
     }
 }
