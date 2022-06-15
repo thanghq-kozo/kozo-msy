@@ -15,7 +15,7 @@ class ContractService
     }
 
     public function all() {
-        return $this->contractRepository->with(['order'])->allDesc();
+        return $this->contractRepository->with(['order.order_name', 'order.order_token'])->allDesc();
     }
 
     public function insert(array $attributes)
