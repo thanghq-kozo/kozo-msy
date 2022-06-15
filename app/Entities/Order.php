@@ -32,8 +32,6 @@ class Order extends Model implements Transformable
         'order_status_url',
         'referring_site',
         'customer_id',
-        'product_name',
-        'product_price',
         'quantity',
         'status',
         'fulfillments_update_at'

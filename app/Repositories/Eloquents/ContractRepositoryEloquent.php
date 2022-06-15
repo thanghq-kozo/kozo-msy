@@ -36,7 +36,7 @@ class ContractRepositoryEloquent extends BaseRepository implements ContractRepos
 
     public function allDesc()
     {
-        return $this->model->select('*')->orderBy('id','DESC')->get();
+        return $this->model->select('*')->orderBy('id','DESC')->with(['order:id_order,order_name,order_token'])->get();
     }
 
     public function insert(array $data)

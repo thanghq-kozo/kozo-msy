@@ -41,8 +41,10 @@ class Contract extends Model implements Transformable
         'current_price'
     ];
 
-    public function order(): HasOne
+    public function order() : HasOne
     {
-        return $this->hasOne(Order::class, 'origin_order_id', 'id_order');
+        return $this->hasOne(Order::class, 'id_order', 'origin_order_id');
+//        return $this->belongsTo(Order::class, 'id_order', 'origin_order_id');
+
     }
 }

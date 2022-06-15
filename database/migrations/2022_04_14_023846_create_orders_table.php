@@ -29,8 +29,6 @@ class CreateOrdersTable extends Migration
             $table->text('order_status_url')->nullable();
             $table->text('referring_site')->nullable();
             $table->bigInteger('customer_id')->nullable();
-            $table->text('product_name')->nullable();
-            $table->decimal('product_price', $precision = 18, $scale = 2)->nullable();
             $table->integer('quantity')->nullable();
             $table->string('status')->nullable();
             $table->timestamp('fulfillments_update_at')->nullable();
