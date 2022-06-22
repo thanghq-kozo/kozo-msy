@@ -23,6 +23,7 @@ class Contract extends Model implements Transformable
      */
     protected $fillable = [
         'contract_id',
+        'next_billing',
         'billing_interval',
         'billing_interval_count',
         'billing_min_cycles',
