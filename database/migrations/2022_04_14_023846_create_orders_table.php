@@ -24,6 +24,7 @@ class CreateOrdersTable extends Migration
             $table->bigInteger('line_item_id');
             $table->bigInteger('product_id');
             $table->bigInteger('variant_id');
+            $table->string('delivery_date');
             $table->string('email')->nullable();
             $table->string('contact_email')->nullable();
             $table->text('order_status_url')->nullable();

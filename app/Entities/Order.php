@@ -27,6 +27,7 @@ class Order extends Model implements Transformable
         'line_item_id',
         'product_id',
         'variant_id',
+        'delivery_date',
         'email',
         'contact_email',
         'order_status_url',
