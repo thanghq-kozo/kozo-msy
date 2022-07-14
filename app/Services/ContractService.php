@@ -32,4 +32,13 @@ class ContractService
     {
         return $this->contractRepository->findByField($field, $value, $columns);
     }
+    public function getOrdersRemind()
+    {
+        return $this->contractRepository->ordersRemind();
+    }
+
+    public function updateCount()
+    {
+        return $this->contractRepository->updateCount();
+    }
 }

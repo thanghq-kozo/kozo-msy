@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Helpers\CommonResponse;
 use App\Helpers\HandleException;
 use App\Helpers\ResponseHelper;
+use App\Mail\MailRemind;
 use App\Services\ContractService;
+use App\Services\UserService;
 use Exception;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\JsonResponse;
@@ -13,14 +15,17 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 
 class ContractController extends Controller
 {
     protected $contractService;
+    protected $userService;
 
-    public function __construct(ContractService $contractService)
+    public function __construct(ContractService $contractService, UserService $userService)
     {
         $this->contractService = $contractService;
+        $this->userService = $userService;
     }
     public function index(): JsonResponse
     {
@@ -74,5 +79,27 @@ class ContractController extends Controller
     public function getContractByIdOrder($id): JsonResponse
     {
         return ResponseHelper::send($this->contractService->findByField('origin_order_id', $id));
+    }
+
+    public function getOrdersRemind()
+    {
+        $contracts = json_decode(json_encode($this->contractService->getOrdersRemind()), true);
+        foreach ($contracts as $contract) {
+            $user = json_decode(json_encode($this->userService->getUserById($contract['customer_id'])), true);
+            $mailData = [
+                'last_name' => $user[0]['last_name'],
+            ];
+            try {
+                Mail::to('thanghorit@gmail.com')->send(new MailRemind($mailData));
+            } catch (Exception $e) {
+                Log::error($e);
+            }
+        }
+        return ResponseHelper::send($this->contractService->getOrdersRemind());
+    }
+
+    public function updateCount(): JsonResponse
+    {
+        return ResponseHelper::send($this->contractService->updateCount());
     }
 }

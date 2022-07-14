@@ -16,7 +16,8 @@ class CreateContractsTable extends Migration
         Schema::create('contracts', function (Blueprint $table) {
             $table->Increments('id');
             $table->bigInteger('contract_id')->nullable();
-            $table->string('next_billing')->nullable();
+            $table->date('next_billing')->nullable();
+            $table->integer('count')->default(1);
             $table->string('billing_interval');
             $table->integer('billing_interval_count');
             $table->integer('billing_min_cycles')->nullable();

@@ -5,6 +5,8 @@ namespace App\Repositories\Eloquents;
 use App\Entities\Contract;
 use App\Repositories\ContractRepository;
 use App\Validators\ContractValidator;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\DB;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Prettus\Repository\Eloquent\BaseRepository;
 
@@ -49,5 +51,26 @@ class ContractRepositoryEloquent extends BaseRepository implements ContractRepos
         return $this->model
             ->whereIn('id', $ids)
             ->update(['status' => 'CANCELLED']);
+    }
+
+    public function ordersRemind()
+    {
+        $rentDay = date('Y-m-d', strtotime('+5 day', strtotime(Carbon::now()->format('Y-m-d'))));
+        return $this->model
+            ->select('customer_id')
+            ->whereDate('next_billing', $rentDay)
+            ->where('count', '<', 12)
+            ->where('status', '=', 'ACTIVE')
+            ->get();
+    }
+
+    public function updateCount()
+    {
+        $rentDay = date('Y-m-d', strtotime('+32 day', strtotime(Carbon::now()->format('Y-m-d'))));
+        return $this->model
+            ->where('count', '<', 12)
+            ->where('status', '=', 'ACTIVE')
+            ->whereDate('next_billing', '<', $rentDay)
+            ->update(['count' => DB::raw('count+1')]);
     }
 }

@@ -18,23 +18,8 @@ class OrderService
         return $this->orderRepository->all()->sortByDesc('id');
     }
 
-    public function getOrdersRemind()
-    {
-        return $this->orderRepository->ordersRemind();
-    }
-
-    public function updateCount()
-    {
-        return $this->orderRepository->updateCount();
-    }
-
     public function insert(array $attributes)
     {
         return $this->orderRepository->insert($attributes);
-    }
-
-    public function updateStatus(array $ids)
-    {
-        return $this->orderRepository->updateStatus($ids);
     }
 }
